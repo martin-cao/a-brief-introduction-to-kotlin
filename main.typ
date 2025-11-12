@@ -5,6 +5,9 @@
 #import "@preview/codly:1.3.0": *
 #import "@preview/codly-languages:0.1.10": *
 
+#set text(font: "Noto Sans CJK SC")
+#show raw: set text(font: "JetBrains Mono")
+
 #codly(languages: codly-languages)
 
 #show: codly-init.with()
@@ -19,6 +22,7 @@
         date: datetime.today(),
         institution: [Tianjin University of Science and Technology],
     ),
+    // config-common(show-notes-on-second-screen: right),
 )
 
 #title-slide()
@@ -32,6 +36,11 @@
 - 更少样板代码：类型推断、属性访问器、`data class`、默认参数、具名参数
 - 顶层函数与拓展函数
 - `textView.text = "Hi"` v.s. `.setText("Hi)`
+
+#speaker-note[
+  + This is a speaker note.
+  + You won't see it unless you use `config-common(show-notes-on-second-screen: right)`
+]
 
 == Null Safety
 
@@ -57,6 +66,20 @@
 = Basic Syntax
 
 == Variables & Types
+#speaker-note[
+- `val` / `var`
+- 类型推断 & 显式类型标注
+- 类型转换
+
+#raw(lang: "kotlin", block: true,
+`val x = 114514
+val longX = x.toLong()
+val pi = 3.1415
+var lang: String = "Java"
+lang = "Kotlin"
+// pi = 3.14 // ❌ Error
+`.text)
+]
 
 #slide[
 - `val` / `var`
@@ -69,7 +92,7 @@ val longX = x.toLong()
 val pi = 3.1415
 var lang: String = "Java"
 lang = "Kotlin"
-pi = 3.14 // ❌ Error
+// pi = 3.14 // ❌ Error
 `.text)
 ]
 
@@ -130,12 +153,14 @@ for (i in 0 until 10 step 2) print(i)
 - `val` / `var` 直接生成属性
 - `data class` 自动生成常见方法
 
+#codly(footer: [Point(x=10, y=30)])
 #raw(lang: "kotlin", block: true,
 `class Person(val name: String, var age: Int) {
   fun birthday() { age++ }
 }
 data class Point(val x: Int, val y: Int)
 val p = Point(10, 20).copy(y = 30)
+println(p.toString())
 `.text)
 
 
