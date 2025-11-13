@@ -204,8 +204,59 @@ fun printLen(x: Any) {
     }
 `.text)
 
+== Object & Companions
+
+- `object`：单例对象
+- `companion object`：伴生单例对象（用于类的静态成员）
+
+#raw(lang: "kotlin", block: true,
+`object Logger {
+    fun log(msg: String) = println("Log: $msg")
+}
+
+class User(val name: String) {
+    companion object {
+        fun createDefault() = User("Anonymous")
+    }
+}
+val u = User.createDefault()
+`.text)
+
+== Enums
+
+- 支持构造函数、属性和方法
+- 自带 `values()` / `valueOf()`
+
+#raw(lang: "kotlin", block: true,
+`enum class Direction(val dx: Int, val dy: Int) {
+    UP(0, -1),
+    DOWN(0, 1),
+    LEFT(-1, 0),
+    RIGHT(1, 0);
+
+    fun isVertical() = this == UP || this == DOWN
+}
+`.text)
+
+== Sealed Classes
+
+- 有限且可扩展的类型层次
+- 于同一文件内定义
+- 常用于：结果类型、UI状态、AST、网络响应封装……
+
+#raw(lang: "kotlin", block: true,
+`sealed class Result
+data class Ok(val v: String): Result()
+data class Err(val msg: String): Result()
+fun handle(r: Result) = when (r) {
+  is Ok  -> r.v
+  is Err -> "Error: ${r.msg}"
+}
+`.text)
+
 == Idioms & Style
 
+- 驼峰式命名
 - 多用不可变，避免`!!`
 - 对于简单函数，优先使用表达式
 - 充分利用标准库
