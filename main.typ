@@ -23,8 +23,8 @@
         institution: [Tianjin University of Science and Technology],
     ),
     config-common(
-        // show-notes-on-second-screen: right,
-        handout: true
+        show-notes-on-second-screen: right,
+        handout: false
     ),
 )
 
@@ -114,7 +114,7 @@
 
 - 可能有同学用过 Java 的匿名类来设置监听，会觉得很繁琐。Lambda 则提供了一种简洁的方式。比如在 Kotlin 中，我们可以用 lambda 来表示按钮点击之后要做的事情，而不用写一大坨 new View.OnClickListener()。代码短小而清晰，一眼就能看出逻辑。
 
-- 另外，Kotlin 的集合 API 非常丰富，受函数式风格影响。比如有 map()、filter()、flatMap()、fold() 等等操作，可以方便地对集合进行转换、过滤和累积运算。举个例子，如果我们有一个列表，想筛选出其中的偶数然后求它们的平方，Kotlin 一行链式调用就能搞定，而用传统的 for 循环需要不少模板代码。Kotlin 中：list.filter { it % 2 == 0 }.map { it \* it } 就完成了“取偶数、求平方”的整个操作。这种写法不仅代码量少，而且语义清晰：filter 就是在过滤，map 就是在映射，看代码就像在读自然语言描述流程一样。
+- 另外，Kotlin 的集合 API 非常丰富，受函数式风格影响。比如有 map()、filter()、flatMap()、fold() 等等操作，可以方便地对集合进行转换、过滤和累积运算。
 
 - 总之，Kotlin 的函数式特性让代码更简洁优雅，同时也减少了错误的可能（因为你少写了很多显式的循环和临时变量）。
 ]
@@ -127,7 +127,7 @@
 #speaker-note[
 - 在 Android 开发领域，Kotlin 现在有着一流的官方支持和繁荣的生态系统。2019 年 Google 宣布 Android 开发进入 “Kotlin-first” 时代，意思是 Kotlin 成为了 Android 官方首选的开发语言。很多新的 Android API 或 Jetpack 库都优先以 Kotlin 版本提供，对 Kotlin 做了特别优化。
 
-- 比如 Jetpack 中大量组件都提供了 Kotlin 扩展（KTX）库。一些常用的 Android 类在 KTX 库里增加了 Kotlin 扩展函数或属性，让我们用 Kotlin 写代码时更加顺手（之前提到的 view.isVisible 就是来自 androidx.core KTX 的扩展属性）。还有协程 (Coroutines) 等现代并发工具也是在 Kotlin 中才有的，用于替代过去的 AsyncTask 等方案，编写异步代码更简单直观。
+- 比如 Jetpack 中大量组件都提供了 Kotlin 扩展（KTX）库。一些常用的 Android 类在 KTX 库里增加了 Kotlin 扩展函数或属性，让我们用 Kotlin 写代码时更加顺手。还有协程 (Coroutines) 等现代并发工具也是在 Kotlin 中才有的，用于替代过去的 AsyncTask 等方案，编写异步代码更简单直观。
 ]
 
 = Basic Syntax
@@ -145,7 +145,7 @@
     - val 声明的是只读变量（相当于常量）。一旦赋值后就不能再改变，类似于 Java 里的 final 变量。
     - var 声明的是可变变量，可以被重新赋值。
 
-- 示例代码中，我们声明了一个只读变量。Kotlin 有类型推断能力，这里我们没写类型，编译器会自动推断 x 是 Int 类型。如果需要，我们也可以显式标注类型，比如下面这样，这样更清楚地表明 lang 是字符串。同时我们看到，接下来 lang = "Kotlin" 是被允许的，因为 lang 是 var，可以修改。
+- 示例代码中，我们声明了几个只读变量。Kotlin 有类型推断能力，这里我们没写类型，编译器会自动推断 x 是 Int 类型。如果需要，我们也可以显式标注类型，比如下面这样，这样更清楚地表明 lang 是字符串。同时我们看到，接下来 lang = "Kotlin" 是被允许的，因为 lang 是 var，可以修改。
 
 - 相反，如果尝试修改一个 val 就会报错。例如代码里我们对pi二次赋值就会得到一个编译错误。这展示了 val 的特性：不可重新赋值，保证了数据的不变性。
 
@@ -320,7 +320,7 @@ fun printLen(x: Any) {
 #codly(footer: [o])
 #raw(lang: "kotlin", block: true,
 `fun String.lastChar(): Char = this[lastIndex]
-"Hello".lastChar()
+println("Hello".lastChar())
 `.text)
 
 == Collections & Lambdas (Quick Look)
