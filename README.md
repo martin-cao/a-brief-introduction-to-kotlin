@@ -1,33 +1,19 @@
-# Kotlin 简明介绍
+# A Brief Introduction to Kotlin
 
-这是我在天津科技大学《移动终端程序设计》课堂上制作的一个简单介绍 Kotlin 的演示文稿（slides）。
+This is a presentation slide used for introduction of Kotlin on *Programming Design in Mobile Terminal*.
 
-## 关于本项目
+## About This Project
 
-本项目使用 [Typst](https://typst.app/) 制作演示文稿，主要内容包括：
+The slides is created using [Typst](https://typst.app/) and [Touying](https://github.com/touying-typ/touying)
 
-- Kotlin 的优势（简洁性、可读性、空安全等）
-- Kotlin 与 Java 的互操作性
-- Kotlin 在 Android 开发中的应用
+## How to Build
 
-## 使用方法
-
-1. 安装 Typst
-2. 编译演示文稿：
+1. Install Typst
+2. Compile `main.typ`：
    ```bash
    typst compile main.typ
    ```
 
-## 许可证
+## License
 
-本项目采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可证。
-
-这意味着您可以：
-- **共享** — 在任何媒介以任何形式复制、发行本作品
-- **演绎** — 修改、转换或以本作品为基础进行创作
-
-但需要遵守以下条件：
-- **署名** — 您必须给出适当的署名
-- **非商业性使用** — 您不得将本作品用于商业目的
-- **相同方式共享** — 如果您再混合、转换或者基于本作品进行创作，您必须基于与原作品相同的许可协议分发您的作品
-
+This project is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
